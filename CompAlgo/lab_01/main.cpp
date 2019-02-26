@@ -1,6 +1,8 @@
+#include <algorithm>
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <cmath>
 
 #include "myio.hpp"
 #include "ninterp.hpp"
@@ -15,6 +17,7 @@ int main(int argc, char **argv)
 	}
 
 	double x;
+    double res;
 	size_t polExp;
 	ifstream input;
     ptable_t ptable;
@@ -41,12 +44,27 @@ int main(int argc, char **argv)
         vec_x.push_back(subtable[i][0]);
     }
 
-    //if (x < vec_x[0] )
+    if (x < *min_element(vec_x.begin(), vec_x.end()))
+	{
+		cout << "Значение заданного аргумента ниже заданного отрезка. Экстраполяция" << '\n';
+	}
+	else if (x > *max_element(vec_x.begin(), vec_x.end()))
+	{
+		cout << "Значение заданного аргумента выше заданного отрезка. Экстраполяция" << '\n';
+	}
 
     ptable = ptable_create(subtable);
     ptable_fill(ptable, vec_x);
 
-    cout << "f(" << x << ") = " << nPolynomial(ptable, vec_x, x) << '\n';
+    nPolPrint(cout, ptable, vec_x);
+    res = nPolynomial(ptable, vec_x, x);
+    cout << "P" << polExp << "(" << x << ") = " << res << '\n';
+
+    if (argc == 3)
+    {
+        ofstream output(argv[2], ofstream::app);
+        output << res << '\n';
+    }
 
 	return EXIT_SUCCESS;
 }

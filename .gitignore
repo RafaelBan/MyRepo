@@ -1,0 +1,8 @@
+*.exe
+*.o
+*.creator.user
+*.bin
+*.out
+*.gch
+**/__pycache__/**
+

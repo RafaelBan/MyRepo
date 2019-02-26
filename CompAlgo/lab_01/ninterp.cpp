@@ -1,4 +1,5 @@
 #include "ninterp.hpp"
+#include <sstream>
 
 #define my_fabs(number) (((number) > 0) ? (number) : (-(number)))
 
@@ -92,7 +93,7 @@ void ptable_fill(ptable_t &ptable, std::vector<double> vec_x)
 double nPolynomial(ptable_t ptable, std::vector<double> vec_x, double x)
 {
 	double nPol;
-	double	subPolX;
+	double subPolX;
 
 	subPolX = 1;
 	nPol = ptable[0][0];
@@ -105,5 +106,46 @@ double nPolynomial(ptable_t ptable, std::vector<double> vec_x, double x)
 	}
 
 	return nPol;
+}
+
+void nPolPrint(std::ostream &sout, ptable_t ptable, std::vector<double> vec_x)
+{
+	std::string subPolX;
+	std::stringstream ss;
+
+	sout << "P" << ptable.size() - 1 << "(x) = ";
+
+	subPolX = "";
+	ss << ptable[0][0];
+
+	for (size_t i = 1, len = vec_x.size(); i < len; i++)
+	{
+		std::string cx;
+		std::string cp;
+		std::stringstream temp_ss;
+
+		ss << " + ";
+
+		temp_ss << vec_x[i - 1];
+		temp_ss >> cx;
+		subPolX += "(x - " + cx + ")";
+
+		temp_ss << ptable[i][0];
+		temp_ss >> cp;
+
+		ss << subPolX << "(" << ptable[i][0] << ")";
+	}
+
+	sout << ss.str() << '\n';
+}
+
+void ptablePrint(std::ostream &sout, const ptable_t &ptable)
+{
+	size_t len = ptable.size();
+
+	for (size_t i = 0; i < len; i++)
+	{
+		
+	}
 }
 

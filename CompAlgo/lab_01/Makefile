@@ -7,6 +7,7 @@ LFLAGS :=
 
 SNAME1 := ftablegen.py
 SNAME2 := fprocess.py
+SNAME3 := sumup.py
 
 PNAME := fnabiev_lab01
 OBJS.$(PNAME) := main.o myio.o ninterp.o
@@ -19,14 +20,16 @@ pquantity := 20
 polexp := 4
 soutput := ftable.out
 pinput := ftable.out
+save := save
 
-buld: $(PNAME)
+build: $(PNAME)
 
 run:
 	@$(PSH) $(SNAME1) '--fstring=$(function)' '--xarg=$(xarg)' '--xstart=$(xstart)' '--xfinish=$(xfinish)' '--pquentity=$(pquantity)' '--output=$(soutput)'
 	@echo 'Интерполяция:'
 	@echo 'Степень полинома = $(polexp)'
-	@echo '$(xarg) $(polexp)' | ./$(PNAME) $(pinput) 2>/dev/null
+	@echo '$(xarg) $(polexp)' | ./$(PNAME) $(pinput) $(save) 2>/dev/null
+	@$(PSH) $(SNAME3) $(save)
 
 $(PNAME): $(OBJS.$(PNAME))
 	$(CC) $^ $(LFLAGS) -o $@

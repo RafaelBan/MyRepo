@@ -19,6 +19,7 @@ def showRef():
           '\t\txFinish = 1\t\t- конечное значение аргумента для таблицы.\n'
           '\t\txQuantity = 20\t\t- кол-во записей таблицы.\n'
           '\t\toutput = \'ftable.out\'\t- название выходного файла.\n'
+          '\t\tsave = \'save\'\t\t- файл записи значения функции для данного x.\n'
           '\n'
           '\tЧтобы изменить тот ли иной параметр программы, передайте\n'
           '\tв аргументы командой строки конструкцию вида:\n'
@@ -40,6 +41,7 @@ def main():
     pQuantity = 20
     step = (xFinish - xStart) / pQuantity
     output = 'ftable.out'
+    save = 'save'
     EPSILON = 1e-12
 
     argc = len(sys.argv)
@@ -65,6 +67,8 @@ def main():
             pQuantity = int(arg[ind:])
         elif (arg.startswith('--output=')):
             output = arg[ind:].strip()
+        elif (arg.startswith('--save=')):
+            save = arg[ind:].strip()
         elif (arg == '-h' or arg == '--help'):
             showRef()
 
@@ -125,6 +129,10 @@ def main():
     print()
 
     print('f({:g}) = {:g}'.format(xArg, f(xArg)))
+
+    saver = open(save, 'w')
+    saver.write('{:g}\n'.format(f(xArg)))
+    saver.close()
 
 
 if (__name__ == '__main__'):
