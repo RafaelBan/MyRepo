@@ -104,6 +104,7 @@ def main():
     print('{:g}'.format(xFinish))
 
     print('h = {:g}'.format(step))
+    print('n = {:d}'.format(pQuantity))
    
     f = fp.function(fString)
 

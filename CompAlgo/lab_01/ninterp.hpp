@@ -15,7 +15,7 @@ ptable_t ptable_create(ftable_t ftable);
 
 void ptable_fill(ptable_t &ptable, std::vector<double> vec_x);
 
-void ptablePrint(std::ostream &sout, const ptable_t &ptable);
+void ptablePrint(std::ostream &sout, const ptable_t &ptable, std::vector<double> vec_x);
 
 void nPolPrint(std::ostream &sout, ptable_t ptable, std::vector<double> vec_x);
 

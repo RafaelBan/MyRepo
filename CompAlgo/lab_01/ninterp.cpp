@@ -1,4 +1,5 @@
 #include "ninterp.hpp"
+#include <iomanip>
 #include <sstream>
 
 #define my_fabs(number) (((number) > 0) ? (number) : (-(number)))
@@ -39,7 +40,14 @@ ftable_t ftable_subtable(ftable_t ftable, double x, size_t polExp)
 	ftable_t subtable;
 
 	nodesQ = polExp + 1;
-	begInd = (int)find_nearest(ftable, x) - (nodesQ / 2);
+	begInd = (int)find_nearest(ftable, x);
+
+    if (ftable[begInd][0] < x)
+    {
+        begInd += 1;
+    }
+
+    begInd -= (nodesQ / 2);
 
 	if (begInd < 0)
 	{
@@ -139,13 +147,53 @@ void nPolPrint(std::ostream &sout, ptable_t ptable, std::vector<double> vec_x)
 	sout << ss.str() << '\n';
 }
 
-void ptablePrint(std::ostream &sout, const ptable_t &ptable)
+int getIdx(size_t i, size_t j)
+{
+    int idx = static_cast<int>(i);
+
+    if ((idx - j) % 2 != 0)
+    {
+        return -1;
+    }
+    
+    idx -= static_cast<int>(j);
+    idx /= 2;
+
+    return idx;
+}
+
+void ptablePrint(std::ostream &sout, const ptable_t &ptable, std::vector<double> vec_x)
 {
 	size_t len = ptable.size();
 
-	for (size_t i = 0; i < len; i++)
+    sout.setf(std::ios::fixed);
+
+	for (size_t i = 0; i < len * 2 - 1; i++)
 	{
-		
+	    for (size_t j = 0; j < len; j++)
+        {
+            int idx = getIdx(i, j);
+
+            if (idx < 0 || idx >= static_cast<int>(len - j))
+            {
+                if (j == 0)
+                {
+                    sout << "---------" << " ";
+                }
+                sout << "---------" << " ";
+            }
+            else
+            {
+                if (j == 0)
+                {
+                    sout << std::setw(9) << vec_x[idx] << " ";
+                }
+                sout << std::setw(9) << ptable[j][idx] << " ";
+            }
+        }
+        sout << '\n';
 	}
+
+    sout.unsetf(std::ios::fixed);
 }
 

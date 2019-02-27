@@ -25,11 +25,19 @@ save := save
 build: $(PNAME)
 
 run:
-	@$(PSH) $(SNAME1) '--fstring=$(function)' '--xarg=$(xarg)' '--xstart=$(xstart)' '--xfinish=$(xfinish)' '--pquentity=$(pquantity)' '--output=$(soutput)'
+	@$(PSH) $(SNAME1) '--fstring=$(function)' '--xarg=$(xarg)' '--xstart=$(xstart)' '--xfinish=$(xfinish)' '--pquantity=$(pquantity)' '--output=$(soutput)'
 	@echo 'Интерполяция:'
 	@echo 'Степень полинома = $(polexp)'
 	@echo '$(xarg) $(polexp)' | ./$(PNAME) $(pinput) $(save) 2>/dev/null
 	@$(PSH) $(SNAME3) $(save)
+
+manual_run:
+	@$(PSH) $(SNAME1) '--fstring=$(function)' '--xarg=$(xarg)' '--xstart=$(xstart)' '--xfinish=$(xfinish)' '--pquantity=$(pquantity)' '--output=$(soutput)'
+	@echo 'Интерполяция:'
+	@echo 'Степень полинома = $(polexp)'
+	@./$(PNAME) $(pinput) $(save)
+	@$(PSH) $(SNAME3) $(save)
+
 
 $(PNAME): $(OBJS.$(PNAME))
 	$(CC) $^ $(LFLAGS) -o $@

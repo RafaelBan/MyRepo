@@ -55,6 +55,10 @@ int main(int argc, char **argv)
 
     ptable = ptable_create(subtable);
     ptable_fill(ptable, vec_x);
+    
+    cout << "" << '\n';
+    ptablePrint(cout, ptable, vec_x);
+    cout << '\n';
 
     nPolPrint(cout, ptable, vec_x);
     res = nPolynomial(ptable, vec_x, x);
