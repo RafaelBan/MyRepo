@@ -1,4 +1,5 @@
 import sys
+import fprocess as fp
 
 
 def read_table(infile):
@@ -21,16 +22,20 @@ def main():
     argv = sys.argv
 
     if (len(argv) < 2):
-
         argv.append(input("Введите имя входного файла: "))
+
+    fstr = input('Введите функцию: ').strip()
+    if (not fp.isMathExp(fstr)):
+        return 1
+    f = fp.function(fstr)
 
     infile = open(argv[1], 'r')
     x, y = read_table(infile)
     infile.close()
 
     for i in range(len(x)):
-
-        print(x[i], y[i])
+        print('{:15g} {:15g}'.format(x[i], y[i]))
+    print()
 
     h = [0] * len(x)
     xi = [0] * len(x) + [0]
@@ -45,7 +50,7 @@ def main():
         Ai = h[i - 1]
         Bi = -2 * (h[i - 1] + h[i])
         Di = h[i]
-        Fi = y[i]
+        Fi = -3 * ((y[i] - y[i - 1]) / h[i] - (y[i - 1] - y[i - 2]) / h[i - 1])
 
         xi[i + 1] = Di / (Bi - Ai * xi[i])
         eta[i + 1] = (Fi + Ai * eta[i]) / (Bi - Ai * xi[i])
@@ -70,12 +75,12 @@ def main():
     k = 0
     while (xarg > x[k]):
         k += 1
-    k -= 1
 
-    res = a[k] + b[k] * (xarg - x[k - 1]) + c[k] * (xarg - x[k - 1])**2 + d[k] * (xarg - x[k - 1])**3
+    phi = a[k] + b[k] * (xarg - x[k - 1]) + c[k] * (xarg - x[k - 1])**2 + d[k] * (xarg - x[k - 1])**3
 
-    print(res)
-
+    print('phi =', phi)
+    print('f(x) =', f(xarg))
+    print('Погрешность:', (1 - phi / f(xarg)))
 
 if (__name__ == '__main__'):
     main()
