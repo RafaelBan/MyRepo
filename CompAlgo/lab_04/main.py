@@ -132,8 +132,12 @@ def main():
         x.append(table[i][0])
         y.append(table[i][1])
 
-    pyplot.scatter(x, y)
+    pyplot.scatter(x, y, c = "red")
 
+    pyplot.gcf().canvas.set_window_title("Набиев Фарис. ИУ7-43Б. Вычислительные алгоритмы. ЛР4")
+    pyplot.title("Аппроксимация функции\nНаилучшее среднеквадратичное значение");
+    pyplot.xlabel("x")
+    pyplot.ylabel("y")
     pyplot.show()
 
 
