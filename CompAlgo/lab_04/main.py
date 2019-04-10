@@ -26,7 +26,7 @@ def getEqSystem(table, n):
 
         for j in range(n + 1):
 
-            eqsystem[i][j] = sum([table[k][2] ** 2 * table[k][0] ** (i + j) for k in range(len(table))])
+            eqsystem[i][j] = sum([table[k][2] ** 1 * table[k][0] ** (i + j) for k in range(len(table))])
 
     return eqsystem
 
@@ -57,7 +57,7 @@ def gauss(eqsystem):
                 eqsystem[i][j] += ratio * eqsystem[k][j]
 
     for i in range(n):
-        print(('{:9.3f}\t' * (n + 1)).format(*eqsystem[i]))
+        print(('{:9g}\t' * (n + 1)).format(*eqsystem[i]))
     print()
 
     roots = [0] * n
@@ -95,7 +95,7 @@ def main():
     eqsystem = getEqSystem(table, n)
 
     for i in range(n + 1):
-        print(('{:9.3f}\t' * (n + 2)).format(*eqsystem[i]))
+        print(('{:9g}\t' * (n + 2)).format(*eqsystem[i]))
     print()
 
     coefs = gauss(eqsystem)
@@ -122,17 +122,23 @@ def main():
 
         x_cur += x_step
 
-    pyplot.plot(x, y)
+    pyplot.plot(x, y, zorder = 1)
 
     x = []
     y = []
+    p = []
 
     for i in range(len(table)):
 
         x.append(table[i][0])
         y.append(table[i][1])
+        p.append(table[i][2])
 
-    pyplot.scatter(x, y, c = "red")
+    pdiff = max(p) - min(p) + 10
+    maxp = max(p)
+
+    for i in range(len(x)):
+        pyplot.scatter(x[i], y[i], 10 + 40 * (pdiff - maxp + p[i]) / pdiff, c = "red", zorder = 2)
 
     pyplot.gcf().canvas.set_window_title("Набиев Фарис. ИУ7-43Б. Вычислительные алгоритмы. ЛР4")
     pyplot.title("Аппроксимация функции\nНаилучшее среднеквадратичное значение");
