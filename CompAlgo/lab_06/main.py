@@ -16,7 +16,7 @@ def toStr(num):
 
 
 def main():
-    
+
     argc = len(sys.argv)
     fname = ''
 
