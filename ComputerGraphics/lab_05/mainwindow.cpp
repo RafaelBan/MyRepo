@@ -261,8 +261,8 @@ bool MainWindow::entryCheckRealProcess(QLineEdit *entry, QString errorTitle,
 //*
 void MainWindow::paintFigure(PaintFigure figure)
 {
-    int xMax = ui->canvas->width();
     auto points = figure.points;
+    int xMax = int(round(points[0].first));
 
     for (int i = 0; i < points.count(); i++)
     {

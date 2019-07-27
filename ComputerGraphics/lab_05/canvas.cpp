@@ -176,6 +176,7 @@ void Canvas::paint(QPainter &painter)
 //    }
 }
 
+/*
 void Canvas::paintFigure(PaintFigure figure, QPainter &painter)
 {
     return;
@@ -288,3 +289,5 @@ void Canvas::paintFigure(PaintFigure figure, QPainter &painter)
         }
     }
 }
+//*/
+
