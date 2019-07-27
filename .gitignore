@@ -2,6 +2,7 @@
 *.exe
 
 compile_commands.json
+.ycm_extra_conf.py
 
 **/build/**
 **/__pycache__/**
