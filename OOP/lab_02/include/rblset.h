@@ -4,7 +4,7 @@
 #include <ostream>
 #include <initializer_list>
 
-#include "rblavltree.hpp"
+#include "rblavltree.h"
 
 
 namespace rbl
@@ -202,5 +202,7 @@ namespace rbl
         BaseContainer storage;
     };
 }
+
+#include "rblset.hh"
 
 #endif // SETBASE_H

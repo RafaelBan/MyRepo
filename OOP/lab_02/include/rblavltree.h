@@ -1,8 +1,8 @@
 #ifndef RBLAVLTREE_H
 #define RBLAVLTREE_H
 
-#include "rblavliterator.hpp"
-#include "rblavlnode.hpp"
+#include "rblavliterator.h"
+#include "rblavlnode.h"
 
 
 namespace rbl
@@ -105,5 +105,7 @@ namespace rbl
         crend() const;
     };
 }
+
+#include "rblavltree.hh"
 
 #endif // RBLAVLTREE_H

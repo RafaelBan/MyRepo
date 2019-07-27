@@ -1,6 +1,6 @@
 #ifndef RBLSet
 #define RBLSet 1
 
-#include "rblset.hpp"
+#include "rblset.h"
 
 #endif /*RBLSet*/

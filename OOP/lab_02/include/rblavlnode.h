@@ -213,4 +213,6 @@ namespace rbl
     };
 }
 
+#include "rblavlnode.hh"
+
 #endif /*RBLAVLNODE_H*/

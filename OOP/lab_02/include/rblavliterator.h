@@ -94,4 +94,6 @@ namespace rbl
     };
 }
 
+#include "rblavliterator.hh"
+
 #endif // RBLAVLITERATOR_H
