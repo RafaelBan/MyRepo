@@ -1,0 +1,6 @@
+#ifndef RBLSet
+#define RBLSet 1
+
+#include "rblset.hpp"
+
+#endif /*RBLSet*/
