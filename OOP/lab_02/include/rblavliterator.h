@@ -81,6 +81,8 @@ namespace rbl
         bool
         operator!=(const self &it) const;
 
+        operator bool() const;
+
     private:
         typename AvlHeader::hwptr header;
         wptr currentNode;

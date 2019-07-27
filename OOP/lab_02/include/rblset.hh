@@ -1,5 +1,5 @@
-#ifndef RBLSET_HPP
-#define RBLSET_HPP
+#ifndef RBLSET_HH
+#define RBLSET_HH
 
 #include "rblset.h"
 #include <iostream>
@@ -602,4 +602,4 @@ namespace rbl
     }
 }
 
-#endif /*RBLSET_HPP*/
+#endif /*RBLSET_HH*/

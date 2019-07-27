@@ -1,5 +1,5 @@
-#ifndef RBLAVLNODE_HPP
-#define RBLAVLNODE_HPP
+#ifndef RBLAVLNODE_HH
+#define RBLAVLNODE_HH
 
 #include "rblavlnode.h"
 
@@ -264,4 +264,4 @@ rbl::AvlNode<SomeType>::erase(sptr node, sptr deleted)
     return node;
 }
 
-#endif // RBLAVLNODE_HPP
+#endif // RBLAVLNODE_HH

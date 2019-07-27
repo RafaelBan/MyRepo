@@ -44,18 +44,19 @@ namespace rbl
         AvlTree();
 
         AvlTree(const AvlTree &tree);
-        AvlTree(AvlTree &&tree);
         AvlTree &
         operator=(const AvlTree &tree);
+        void
+        copy(const AvlTree &tree);
+
+        AvlTree(AvlTree &&tree);
         AvlTree &
         operator=(AvlTree &&tree);
+        void
+        move(AvlTree &tree);
 
         ~AvlTree() override;
 
-        void
-        copy(const AvlTree &tree);
-        void
-        move(AvlTree &tree);
         void
         swap(AvlTree &tree);
 

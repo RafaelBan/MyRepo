@@ -61,5 +61,11 @@ int main()
         std::cout << e.what() << '\n';
     }
 
+    if (s1.begin())
+    {
+        std::cout << "!" << '\n';
+    }
+
     return 0;
 }
+

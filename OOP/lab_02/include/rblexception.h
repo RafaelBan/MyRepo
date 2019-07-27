@@ -22,8 +22,7 @@ namespace rbl
         {
         }
 
-        virtual
-        const char *
+        virtual const char *
         what() const noexcept;
     };
 

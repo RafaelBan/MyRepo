@@ -1,5 +1,5 @@
-#ifndef RBLAVLITERATOR_HPP
-#define RBLAVLITERATOR_HPP
+#ifndef RBLAVLITERATOR_HH
+#define RBLAVLITERATOR_HH
 
 #include "rblavliterator.h"
 #include "rblexception.h"
@@ -34,7 +34,7 @@ rbl::ConstAvlIterator<SomeType>::operator*() const
 {
     if (!currentNode.lock())
     {
-        throw rbl::EndIteratorRead("bla bla bla");
+        throw rbl::EndIteratorRead("At inderection");
     }
 
     return (AvlTNode::getKey(currentNode.lock()));
@@ -149,6 +149,12 @@ rbl::ConstAvlIterator<SomeType>::operator!=(const self &it) const
 }
 
 template <typename SomeType>
+rbl::ConstAvlIterator<SomeType>::operator bool() const
+{
+    return (currentNode.use_count() != 0);
+}
+
+template <typename SomeType>
 typename rbl::ConstAvlIterator<SomeType>::self
 rbl::ConstAvlIterator<SomeType>::begin(typename AvlHeader::hsptr header)
 {
@@ -162,4 +168,4 @@ rbl::ConstAvlIterator<SomeType>::end(typename AvlHeader::hsptr header)
     return self(header, nullptr);
 }
 
-#endif // RBLAVLITERATOR_HPP
+#endif // RBLAVLITERATOR_HH

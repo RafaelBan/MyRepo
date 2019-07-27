@@ -1,5 +1,5 @@
-#ifndef RBLAVLTREE_HPP
-#define RBLAVLTREE_HPP
+#ifndef RBLAVLTREE_HH
+#define RBLAVLTREE_HH
 
 #include "rblavltree.h"
 
@@ -227,4 +227,4 @@ rbl::AvlTree<SomeType>::crend() const
     return const_reverse_iterator(cbegin());
 }
 
-#endif // RBLAVLTREE_HPP
+#endif // RBLAVLTREE_HH
