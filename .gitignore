@@ -1,8 +1,8 @@
-*.exe
 *.o
-*.creator.user
-*.bin
-*.out
-*.gch
+*.exe
+
+compile_commands.json
+
+**/build/**
 **/__pycache__/**
 
