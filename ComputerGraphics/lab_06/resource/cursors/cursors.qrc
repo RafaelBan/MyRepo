@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/base">
+        <file>pencil.png</file>
+        <file>paintbucket.png</file>
+    </qresource>
+</RCC>

@@ -4,9 +4,12 @@
 #include <QFile>
 #include <QFont>
 #include <QFontDatabase>
+#include <QDesktopWidget>
+#include <QRect>
 
 int main(int argc, char *argv[])
 {
+    setbuf(stdout, nullptr);
 
     // Загрузка таблицы стилей
     QFile styleSrc(":/base/MyTheme.qss");
@@ -18,7 +21,7 @@ int main(int argc, char *argv[])
 
     // Установка шрифта
     QFont mainFont("Roboto Regular");
-    mainFont.setPointSize(10);
+    mainFont.setPointSize(9);
     a.setFont(mainFont);
 
     // Установка таблицы стилей
@@ -30,7 +33,13 @@ int main(int argc, char *argv[])
     a.setWindowIcon(QIcon(":/base/ApplicationIcon.png"));
 
     MainWindow w;
+
+    int scrWidth = a.desktop()->screenGeometry(&w).size().width();
+    int scrHeight = int(a.desktop()->screenGeometry(&w).size().height() * .9);
+
+    w.resize(0, 0);
     w.show();
+    w.move(scrWidth / 2 - w.width() / 2, scrHeight / 2 - w.height() / 2);
 
     return a.exec();
 }
