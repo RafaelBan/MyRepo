@@ -1,0 +1,45 @@
+digraph G {
+    fontname = "Tahoma"
+    fontsize = 8
+
+    node [
+        fontname = "Tahoma"
+        fontsize = 8
+    ]
+
+    edge [
+        fontname = "Tahoma"
+        fontsize = 8
+    ]
+
+    point [shape = "point"]
+
+    S1 [label = "1. МП выключена"];
+    S2 [label = "2. Время введено"];
+    S3 [label = "3. Режим выбран"];
+    S4 [label = "4. Нагревание"];
+    S5 [label = "5. Нагревание приостановлено"];
+    S6 [label = "6. Нагревание завершено"];
+    S7 [label = "7. Нагревание отменено"]
+
+    point -> S1
+    S1 -> S2 [label = "  МП1 ", arrowhead="onormal"];
+    S1 -> S3 [label = "МП2 ", arrowhead="onormal"];
+
+    S2 -> S3 [label = "МП2 ", arrowhead="onormal"];
+    
+    S3 -> S2 [label = "МП1 ", arrowhead="onormal"];
+
+    S2 -> S4 [label = "МП3 ", arrowhead="onormal"];
+    S3 -> S4 [label = "МП3 ", arrowhead="onormal"];
+
+    S4 -> S5 [label = "МП4 ", arrowhead="onormal"];
+    S4 -> S6 [label = "МП5 ", arrowhead="onormal"];
+    S4 -> S7 [label = "МП6", arrowhead="onormal"];
+
+    S5 -> S4 [label = "МП3", arrowhead="onormal"];
+    S5 -> S7 [label = " МП6 ", arrowhead="onormal"];
+
+    S6 -> S1 [label = " МП7 ", arrowhead="onormal"];
+    S7 -> S1 [label = " МП7 ", arrowhead="onormal"];
+}

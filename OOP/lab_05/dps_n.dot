@@ -1,0 +1,24 @@
+digraph G {
+    fontname = "Tahoma"
+    fontsize = 8
+    splines = ortho
+
+    node [
+        fontname = "Tahoma"
+        fontsize = 8
+    ]
+
+    edge [
+        fontname = "Tahoma"
+        fontsize = 8
+    ]
+
+    point [shape = "point"]
+
+    S1 [label = "1. Нагреватель выключен"];
+    S2 [label = "2. Нагреватель включен"];
+
+    point -> S1
+    S1 -> S2 [label = " Н1 ", arrowhead="onormal"];
+    S2 -> S1 [label = "  Н2 ", arrowhead="onormal"];
+}

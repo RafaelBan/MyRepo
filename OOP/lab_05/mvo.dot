@@ -1,0 +1,47 @@
+digraph G {
+    fontname = "Tahoma"
+    fontsize = 8
+
+    node [
+        fontname = "Tahoma"
+        fontsize = 8
+    ]
+
+    edge [
+        fontname = "Tahoma"
+        fontsize = 8
+    ]
+
+    user [label="Пользователь", shape="rect"]
+    mp [label="Микроволновая печь"]
+    n [label="Нагреватель"]
+    p [label="Поддон"]
+    d [label="Дверь"]
+    t [label="Таймер"]
+    b [label="Кнопка"]
+
+    user -> mp [xlabel="МП1"]
+    user -> mp [xlabel="МП2"]
+    user -> mp [label="МП3"]
+    user -> mp [label="МП4"]
+    user -> mp [label="МП5"]
+
+    mp -> n [label="Н1"]
+    mp -> n [label="Н2"]
+
+    mp -> p [label="П1"]
+    mp -> p [label="П2"]
+    
+    mp -> d [label="Д2"]
+    mp -> d [label="Д3"]
+    mp -> d [label="МП3", dir="back"]
+    mp -> d [label="МП7", dir="back"]
+
+    mp -> t [label="Т1"]
+    t -> mp [label="МП6"]
+
+    mp -> b [label="МП1", dir="back"]
+    mp -> b [label="МП2", dir="back"]
+    mp -> b [label="К1"]
+    mp -> b [label="К2"]
+}

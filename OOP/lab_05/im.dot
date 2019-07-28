@@ -1,0 +1,76 @@
+digraph G {
+    fontname = "Tahoma"
+    fontsize = 8
+    splines = ortho
+
+    node [
+        fontname = "Tahoma"
+        fontsize = 8
+        shape = "record"
+    ]
+
+    edge [
+        fontname = "Tahoma"
+        fontsize = 8
+    ]
+
+    MP [
+        label = "{" + 
+            "1. Микроволновая печь (МП)\l|" + 
+            "* ID Микроволновой печи\l" + 
+            "V ID Нагревателя (R12)\l" + 
+            "V ID Поддона (R13)\l" + 
+            "V ID Двери (R14)\l" + 
+            "V ID Таймера (R15)\l" +  
+            "V Состояние\l" + 
+        "}"
+    ]
+
+    N [
+        label = "{" + 
+            "2. Нагреватель (Н)\l|" + 
+            "* ID Нагревателя\l" + 
+            "V Состояние\l" + 
+        "}"
+    ]
+
+    P [
+        label = "{" + 
+            "3. Поддон (П)\l|" + 
+            "* ID Поддона\l" + 
+            "V Состояние\l" + 
+        "}"
+    ]
+
+    D [
+        label = "{" + 
+            "4. Дверь (Д)\l|" + 
+            "* ID Двери\l" + 
+            "V Состояние\l" + 
+        "}"
+    ]
+
+    T [
+        label = "{" + 
+            "5. Таймер (Т)\l|" + 
+            "* ID Таймера\l" + 
+            "V Состояние\l" + 
+        "}"
+    ]
+
+    B [
+        label = "{" + 
+            "6. Кнопка (К)\l|" + 
+            "* ID Кнопки\l" + 
+            "V ID Микроволновой печи (R16)\l" +
+            "V Состояние\l" + 
+        "}"
+    ]
+
+    MP -> N [label = " R12 ", dir = "both", arrowhead="onormal", arrowtail="onormal"]
+    MP -> P [label = " R13 ", dir = "both", arrowhead="onormal", arrowtail="onormal"]
+    MP -> D [label = " R14 ", dir = "both", arrowhead="onormal", arrowtail="onormal"]
+    MP -> T [label = " R15 ", dir = "both", arrowhead="onormal", arrowtail="onormal"]
+    MP -> B [label = " R16 ", dir = "both", arrowhead="normal", arrowtail="onormal"]
+
+}
