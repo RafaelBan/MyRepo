@@ -427,7 +427,6 @@ QGroupBox {
 
     border: 1px solid #424242;
     border-radius: 2px;
-    font-size: 12pt;
 
     padding: .4em .1em .1em .1em
 }

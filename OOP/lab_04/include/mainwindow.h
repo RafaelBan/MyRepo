@@ -17,6 +17,7 @@ public:
     virtual ~MainWindow();
 
 private:
+    Ui::MainWindow *ui;
 };
 
 #endif // MAINWINDOW_H_

@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/base">
         <file>ApplicationIcon.png</file>
+        <file>repeat.png</file>
+        <file>undo.png</file>
     </qresource>
 </RCC>
