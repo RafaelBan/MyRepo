@@ -27,7 +27,6 @@ private slots:
     void importData();
 
 signals:
-    void importDataCalled();
 };
 
 #endif // MAINWINDOW_H_

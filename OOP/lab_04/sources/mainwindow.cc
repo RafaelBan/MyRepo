@@ -35,6 +35,6 @@ void MainWindow::connectAll()
 
 void MainWindow::importData()
 {
-    emit importDataCalled();
+    importDataTriggered();
 }
 

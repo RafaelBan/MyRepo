@@ -1,26 +1,20 @@
 #ifndef MAIN_PRESENTER_H_
 #define MAIN_PRESENTER_H_
 
-#include <QObject>
-
 #include "MainView.h"
 #include "Model.h"
-#include "MainViewContainer.h"
+#include "MainViewKeeper.h"
+#include "MainViewObserver.h"
 
-class MainPresenter : public QObject
+class MainPresenter : public MainViewObserver, public MainViewKeeper
 {
-    Q_OBJECT;
-
 public:
     MainPresenter();
 
-    void addView(MainView *view);
+    void addView(MainView *view) override;
 
 private:
-    MainViewContainer views;
-
-private slots:
-    void load();
+    void importData() override;
 };
 
 #endif // MAIN_PRESENTER_H_

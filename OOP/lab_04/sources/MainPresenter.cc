@@ -2,20 +2,18 @@
 
 #include <iostream>
 
-MainPresenter::MainPresenter() :
-    QObject()
+MainPresenter::MainPresenter()
 {
 }
 
 void MainPresenter::addView(MainView *view)
 {
-    views.append(view);
-
-    connect(dynamic_cast<QObject *>(view), SIGNAL(importDataCalled()), this, SLOT(load()));
+    MainViewKeeper::addView(view);
+    view->attach(this);
 }
 
-void MainPresenter::load()
+void MainPresenter::importData()
 {
-    std::cout << "Data has been imported." << '\n';
+    std::cout << "Data has been imported!!!" << '\n';
 }
 

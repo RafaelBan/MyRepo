@@ -21,13 +21,21 @@ set(HEADERS
     include/MainView.h
     include/Model.h
 
-    include/MainViewContainer.h
+    include/Container.h
+
+    include/MainViewObserver.h
+    include/MainViewEmitter.h
+
+    include/MainViewKeeper.h
 )
 
 set(SOURCES
     sources/main.cc
     sources/mainwindow.cc
 
+    sources/MainViewEmitter.cc
+
+    sources/MainViewKeeper.cc
     sources/MainPresenter.cc
     sources/Model.cc
 )

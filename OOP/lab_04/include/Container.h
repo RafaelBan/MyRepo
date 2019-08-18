@@ -1,18 +1,18 @@
-#ifndef MAIN_VIEW_CONTAINER_H_
-#define MAIN_VIEW_CONTAINER_H_
+#ifndef CONTAINER_H_
+#define CONTAINER_H_
 
 #include <vector>
-#include "MainView.h"
 
-class MainViewContainer
+template<typename SomeType>
+class Container
 {
-    using BaseContainer = typename std::vector<MainView *>;
+    using BaseStorage = typename std::vector<SomeType>;
 
 public:
-    using iterator = typename BaseContainer::iterator;
-    using const_iterator = typename BaseContainer::const_iterator;
+    using iterator = typename BaseStorage::iterator;
+    using const_iterator = typename BaseStorage::const_iterator;
 
-    void append(MainView *view) { storage.push_back(view); }
+    void append(const SomeType &data) { storage.push_back(data); }
 
     iterator remove(iterator pos) { return storage.erase(pos); }
     iterator remove(const_iterator pos) { return storage.erase(pos); }
@@ -26,8 +26,8 @@ public:
     const_iterator cend() const { return storage.cend(); }
 
 private:
-    BaseContainer storage;
+    BaseStorage storage;
 };
 
-#endif // MAIN_VIEW_CONTAINER_H_
+#endif // CONTAINER_H_
 

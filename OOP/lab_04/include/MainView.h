@@ -1,12 +1,11 @@
 #ifndef MAIN_VIEW_H_
 #define MAIN_VIEW_H_
 
-class MainView
+#include "MainViewEmitter.h"
+
+class MainView : public MainViewEmitter
 {
 public:
-
-// Signals:
-    virtual void importDataCalled() = 0;
 
 private:
 };
