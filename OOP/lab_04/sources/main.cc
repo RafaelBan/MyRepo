@@ -4,6 +4,7 @@
 #include <QFontDatabase>
 
 #include "mainwindow.h"
+#include "MainPresenter.h"
 
 int main(int argc, char **argv)
 {
@@ -25,6 +26,10 @@ int main(int argc, char **argv)
     a.setWindowIcon(QIcon(":/base/ApplicationIcon.png"));
 
     MainWindow w;
+
+    MainPresenter presenter;
+    presenter.addView(&w);
+
     w.show();
 
     return a.exec();

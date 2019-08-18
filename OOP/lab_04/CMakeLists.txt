@@ -16,11 +16,20 @@ set(CMAKE_AUTOUIC_SEARCH_PATHS
 
 set(HEADERS
     include/mainwindow.h
+
+    include/MainPresenter.h
+    include/MainView.h
+    include/Model.h
+
+    include/MainViewContainer.h
 )
 
 set(SOURCES
     sources/main.cc
     sources/mainwindow.cc
+
+    sources/MainPresenter.cc
+    sources/Model.cc
 )
 
 set(FORMS

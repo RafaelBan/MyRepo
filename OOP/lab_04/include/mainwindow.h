@@ -3,12 +3,14 @@
 
 #include <QMainWindow>
 
+#include "MainView.h"
+
 namespace Ui
 {
     class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, public MainView
 {
     Q_OBJECT;
 
@@ -18,6 +20,14 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    void connectAll();
+
+private slots:
+    void importData();
+
+signals:
+    void importDataCalled();
 };
 
 #endif // MAINWINDOW_H_
