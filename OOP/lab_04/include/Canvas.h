@@ -7,7 +7,11 @@
 #include <QPixmap>
 #include <QPainter>
 
-#include "BufferManager.h"
+#include <QList>
+#include "DrawObject.h"
+#include "CanvasLine.h"
+
+#include <memory>
 
 class Canvas : public QWidget
 {
@@ -16,7 +20,8 @@ class Canvas : public QWidget
 public:
     explicit Canvas(QWidget *parent = nullptr);
 
-    void drawLine(QPoint p1, QPoint p2);
+    void drawLine(QPoint p1, QPoint p2, QColor color = "#000000");
+    void setBackgroundColor(QColor color);
 
 protected:
     void paintEvent(QPaintEvent *event) override;
@@ -24,11 +29,8 @@ protected:
 
 private:
     QColor bgColor;
-    QPixmap buffer;
 
-    BufferManager *bufferManager;
-
-    void updateBufferSize();
+    QList< std::shared_ptr<DrawObject> > drawObjects;
 };
 
 #endif // CANVAS_H_

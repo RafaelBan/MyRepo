@@ -1,21 +1,16 @@
 #include "Canvas.h"
 #include <memory>
 
-#include <QDebug>
-
 Canvas::Canvas(QWidget *parent) :
     QWidget(parent),
 
     bgColor("#ffffff")
 {
-    bufferManager = new BufferManager(this, &buffer, bgColor);
 }
 
 void Canvas::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);
-
-    updateBufferSize();
 }
 
 void Canvas::paintEvent(QPaintEvent *event)
@@ -24,21 +19,22 @@ void Canvas::paintEvent(QPaintEvent *event)
 
     auto painter = std::make_unique<QPainter>(this);
 
-    painter->drawPixmap(0, 0, buffer);
+    painter->fillRect(0, 0, width(), height(), bgColor);
+
+    for (auto drawObject: drawObjects)
+    {
+        drawObject->draw(*painter);
+    }
 }
 
-void Canvas::updateBufferSize()
+void Canvas::setBackgroundColor(QColor color)
 {
-    bufferManager->updateBufferSize();
-    update();
+    bgColor = color;
 }
 
-void Canvas::drawLine(QPoint p1, QPoint p2)
+void Canvas::drawLine(QPoint p1, QPoint p2, QColor color)
 {
-    auto painter = std::make_unique<QPainter>(&buffer);
-
-    painter->setPen(QColor("#000000"));
-    painter->drawLine(p1, p2);
+    drawObjects.append( std::make_shared<CanvasLine>(p1, p2, color) );
 
     update();
 }

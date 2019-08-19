@@ -29,7 +29,8 @@ set(HEADERS
     include/MainViewKeeper.h
 
     include/Canvas.h
-    include/BufferManager.h
+    include/DrawObject.h
+    include/CanvasLine.h
 )
 
 set(SOURCES
@@ -43,7 +44,7 @@ set(SOURCES
     source/Model.cc
 
     source/Canvas.cc
-    source/BufferManager.cc
+    source/CanvasLine.cc
 )
 
 set(FORMS
