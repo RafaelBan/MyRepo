@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.1.0)
 
 project(fnabiev_lab_04)
 
-SET(CMAKE_CXX_COMPILER clang++)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_COMPILER clang++)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
@@ -25,19 +26,24 @@ set(HEADERS
 
     include/MainViewObserver.h
     include/MainViewEmitter.h
-
     include/MainViewKeeper.h
+
+    include/Canvas.h
+    include/BufferManager.h
 )
 
 set(SOURCES
-    sources/main.cc
-    sources/mainwindow.cc
+    source/main.cc
+    source/mainwindow.cc
 
-    sources/MainViewEmitter.cc
+    source/MainViewEmitter.cc
 
-    sources/MainViewKeeper.cc
-    sources/MainPresenter.cc
-    sources/Model.cc
+    source/MainViewKeeper.cc
+    source/MainPresenter.cc
+    source/Model.cc
+
+    source/Canvas.cc
+    source/BufferManager.cc
 )
 
 set(FORMS

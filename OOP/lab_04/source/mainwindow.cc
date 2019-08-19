@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include <QTreeWidget>
+#include "Canvas.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,12 +16,15 @@ MainWindow::MainWindow(QWidget *parent) :
         /*ui->treeWidget->addTopLevelItem(new QTreeWidgetItem);*/
 
 
-    for (int i = 0; i < 30; i++)
-    {
-    auto page = new QWidget();
-    page->setStyleSheet("background-color: #ff0000;");
-    ui->tabWidget->addTab(page, "Sanya");
-    }
+/*    for (int i = 0; i < 30; i++)*/
+    //{
+    //auto page = new QWidget();
+    //page->setStyleSheet("background-color: #ff0000;");
+    //ui->tabWidget->addTab(page, "Sanya");
+    /*}*/
+
+    canvas = new Canvas(this);
+    ui->tabWidget->addTab(canvas, "Canvas");
 }
 
 MainWindow::~MainWindow()
@@ -36,5 +40,6 @@ void MainWindow::connectAll()
 void MainWindow::importData()
 {
     importDataTriggered();
+    canvas->drawLine({500, 500}, {1000, 1000});
 }
 

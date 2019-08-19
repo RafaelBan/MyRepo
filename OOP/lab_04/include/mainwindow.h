@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 #include "MainView.h"
+#include "Canvas.h"
 
 namespace Ui
 {
@@ -23,9 +24,10 @@ private:
 
     void connectAll();
 
+    Canvas *canvas;
+
 private slots:
     void importData();
-
 signals:
 };
 
