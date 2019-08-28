@@ -37,9 +37,6 @@ void Point3d::setZ(double z)
 
 bool Point3d::operator==(const Point3d &another) const
 {
-    return
-        (fabs(X() - another.X()) < EPSILON) &&
-        (fabs(Y() - another.Y()) < EPSILON) &&
-        (fabs(Z() - another.Z()) < EPSILON);
+    return isEval(X(), another.X()) && isEval(Y(), another.Y()) && isEval(Z(), another.Z());
 }
 

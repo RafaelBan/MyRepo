@@ -9,6 +9,10 @@
 class WireFrameModel
 {
 public:
+    void addVertex(const Point3d &point);
+
+    void addEdge(int idx1, int idx2);
+    void addEdge(const Point3d *v1, const Point3d *v2);
 
 private:
     Container<Point3d> vertices;

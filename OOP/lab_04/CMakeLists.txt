@@ -40,6 +40,9 @@ set(HEADERS
     include/Point3d.h
     include/Edge3d.h
     include/WireFrameModel.h
+
+    include/WFMReaderBase.h
+    include/WFMReader.h
 )
 
 set(SOURCES
@@ -60,6 +63,8 @@ set(SOURCES
     source/Point3d.cc
     source/Edge3d.cc
     source/WireFrameModel.cc
+
+    source/WFMReader.cc
 )
 
 set(FORMS
