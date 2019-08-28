@@ -25,6 +25,7 @@ set(HEADERS
     include/Model.h
 
     include/Container.h
+    include/HashTable.h
 
     include/MainViewObserver.h
     include/MainViewEmitter.h
@@ -33,6 +34,12 @@ set(HEADERS
     include/Canvas.h
     include/DrawObject.h
     include/CanvasLine.h
+
+    include/Scene.h
+
+    include/Point3d.h
+    include/Edge3d.h
+    include/WireFrameModel.h
 )
 
 set(SOURCES
@@ -47,6 +54,12 @@ set(SOURCES
 
     source/Canvas.cc
     source/CanvasLine.cc
+
+    source/Scene.cc
+
+    source/Point3d.cc
+    source/Edge3d.cc
+    source/WireFrameModel.cc
 )
 
 set(FORMS

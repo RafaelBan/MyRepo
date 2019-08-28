@@ -1,19 +1,19 @@
-#ifndef CONTAINER_H_
-#define CONTAINER_H_
+#ifndef HASH_TABLE_H_
+#define HASH_TABLE_H_
 
-#include <vector>
+#include <unordered_map>
 
-template<typename SomeType>
-class Container
+template <typename _Key_t, typename _Value_t>
+class HashTable
 {
-    using BaseStorage = typename std::vector<SomeType>;
-
+    using BaseStorage = std::unordered_map<_Key_t, _Value_t>;
 public:
     using iterator = typename BaseStorage::iterator;
     using const_iterator = typename BaseStorage::const_iterator;
 
-    void append(const SomeType &data) { storage.push_back(data); }
+    std::pair<iterator, bool> add(const _Key_t &key, const _Value_t &value) { return storage.insert({ key, value }); }
 
+    size_t remove(const _Key_t &key) { return storage.erase(key); }
     iterator remove(iterator pos) { return storage.erase(pos); }
     iterator remove(const_iterator pos) { return storage.erase(pos); }
 
@@ -33,5 +33,5 @@ private:
     BaseStorage storage;
 };
 
-#endif // CONTAINER_H_
+#endif // HASH_TABLE_H_
 
