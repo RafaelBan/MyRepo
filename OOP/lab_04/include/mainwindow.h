@@ -13,7 +13,7 @@ namespace Ui
 
 class MainWindow : public QMainWindow, public MainView
 {
-    Q_OBJECT;
+    Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);

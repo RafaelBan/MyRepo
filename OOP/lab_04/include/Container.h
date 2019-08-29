@@ -12,10 +12,15 @@ public:
     using iterator = typename BaseStorage::iterator;
     using const_iterator = typename BaseStorage::const_iterator;
 
+    SomeType &operator[](size_t idx) { return storage[idx]; };
+
     void append(const SomeType &data) { storage.push_back(data); }
 
     iterator remove(iterator pos) { return storage.erase(pos); }
     iterator remove(const_iterator pos) { return storage.erase(pos); }
+
+    void resize(size_t count ) { storage.resize(count); }
+    void resize(size_t count, const SomeType& value) { storage.resize(count, value); }
 
     void clear() { storage.clear(); }
 

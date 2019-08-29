@@ -41,8 +41,8 @@ _is_external_stream(FILE *file_stream)
 WFMReader::WFMReader() :
     WFMReaderBase(),
 
-    verticesQuan(-1), edgesQuan(-1),
-    vertexIdx(0), edgeIdx(0)
+    vertexIdx(0), verticesQuan(-1),
+    edgeIdx(0), edgesQuan(-1)
 {
     dataStream = stdout;
 }
@@ -50,8 +50,9 @@ WFMReader::WFMReader() :
 WFMReader::WFMReader(const char *fname) :
     WFMReaderBase(),
 
-    verticesQuan(-1), edgesQuan(-1),
-    vertexIdx(0), edgeIdx(0)
+    vertexIdx(0), verticesQuan(-1),
+    edgeIdx(0), edgesQuan(-1)
+
 
 {
     dataStream = fopen(fname, "r");

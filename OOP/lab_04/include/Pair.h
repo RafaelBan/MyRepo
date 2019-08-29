@@ -1,7 +1,7 @@
 #ifndef PAIR_H_
 #define PAIR_H_
 
-template <typename _T1, typename _T2>
+template <typename _T1 = int, typename _T2 = int>
 struct Pair
 {
     _T1 first;

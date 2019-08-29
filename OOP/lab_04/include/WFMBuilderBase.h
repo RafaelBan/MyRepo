@@ -4,21 +4,24 @@
 #include "Container.h"
 
 #include "Point3d.h"
-#include "Edge3d.h"
+#include "Pair.h"
 #include "WireFrameModel.h"
 
 class WFMBuilderBase
 {
 public:
-    void reset();
+    explicit WFMBuilderBase() = default;
+    virtual ~WFMBuilderBase() = default;
 
-    void setSizes(int pointsQuan, int edgesQuan);
+    virtual void reset() = 0;
 
-    void addVertex(const Point3d &point);
-    void addVertices(const Container<Point3d> &points);
+    virtual void setSizes(int pointsQuan, int edgesQuan) = 0;
 
-    void addEdge(const Edge3d &edge);
-    void addEdges(const Container<Edge3d> &edges);
+    virtual void addVertex(const Point3d &point) = 0;
+    virtual void addVertices(const Container<Point3d> &points) = 0;
+
+    virtual void addEdge(const Pair<> &edge) = 0;
+    virtual void addEdges(const Container< Pair<> > &edges) = 0;
 };
 
 #endif // WFM_BUILDER_BASE_H_

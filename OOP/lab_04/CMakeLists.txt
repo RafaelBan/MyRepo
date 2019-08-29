@@ -5,7 +5,7 @@ project(fnabiev_lab_04)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_COMPILER clang++)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g3 -fsanitize=address,undefined -fno-omit-frame-pointer")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -g3 -fsanitize=address,undefined -fno-omit-frame-pointer")
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
@@ -43,6 +43,9 @@ set(HEADERS
 
     include/WFMReaderBase.h
     include/WFMReader.h
+    include/WFMBuilderBase.h
+    include/WFMBuilder.h
+    include/WFMBuildManager.h
 )
 
 set(SOURCES
@@ -65,6 +68,8 @@ set(SOURCES
     source/WireFrameModel.cc
 
     source/WFMReader.cc
+    source/WFMBuilder.cc
+    source/WFMBuildManager.cc
 )
 
 set(FORMS

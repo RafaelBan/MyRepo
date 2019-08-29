@@ -15,7 +15,7 @@
 
 class Canvas : public QWidget
 {
-    Q_OBJECT;
+    Q_OBJECT
 
 public:
     explicit Canvas(QWidget *parent = nullptr);
