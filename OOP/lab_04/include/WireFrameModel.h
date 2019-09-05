@@ -4,12 +4,17 @@
 #include <memory>
 #include "Container.h"
 
+#include "WFMIterator.h"
+
 #include "Point3d.h"
 #include "Edge3d.h"
 
 class WireFrameModel
 {
 public:
+    using iterator = WFMIterator;
+    using const_iterator = WFMConstIterator;
+
     void addVertex(const Point3d &point);
 
     void addEdge(int idx1, int idx2);
@@ -17,6 +22,20 @@ public:
 
     size_t verticesQuantity();
     size_t edgesQuantity();
+
+    int indexOf(const Point3d &vertex);
+
+    iterator begin();
+    const_iterator begin() const;
+    const_iterator cbegin() const;
+
+    iterator end();
+    const_iterator end() const;
+    const_iterator cend() const;
+
+    Container< std::shared_ptr<Edge3d> > &getEdges();
+    const Container< std::shared_ptr<Edge3d> > &getEdges() const;
+    const Container< std::shared_ptr<Edge3d> > &getConstEdges() const;
 
 private:
     Container< std::shared_ptr<Point3d> > vertices;

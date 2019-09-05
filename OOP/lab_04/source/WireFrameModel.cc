@@ -60,3 +60,72 @@ size_t WireFrameModel::edgesQuantity()
     return edges.size();
 }
 
+int WireFrameModel::indexOf(const Point3d &vertex)
+{
+    for (int idx = 0; idx < int(vertices.size()); idx++)
+    {
+        if (vertex == *vertices[idx])
+        {
+            return idx;
+        }
+    }
+
+    // EXCEPTION
+
+    return -1;
+}
+
+WireFrameModel::iterator
+WireFrameModel::begin()
+{
+    return vertices.begin();
+}
+
+WireFrameModel::const_iterator
+WireFrameModel::begin() const
+{
+    return vertices.begin();
+}
+
+WireFrameModel::const_iterator
+WireFrameModel::cbegin() const
+{
+    return vertices.begin();
+}
+
+WireFrameModel::iterator
+WireFrameModel::end()
+{
+    return vertices.end();
+}
+
+WireFrameModel::const_iterator
+WireFrameModel::end() const
+{
+    return vertices.end();
+}
+
+WireFrameModel::const_iterator
+WireFrameModel::cend() const
+{
+    return vertices.end();
+}
+
+Container< std::shared_ptr<Edge3d> > &
+WireFrameModel::getEdges()
+{
+    return edges;
+}
+
+const Container< std::shared_ptr<Edge3d> > &
+WireFrameModel::getEdges() const
+{
+    return edges;
+}
+
+const Container< std::shared_ptr<Edge3d> > &
+WireFrameModel::getConstEdges() const
+{
+    return edges;
+}
+

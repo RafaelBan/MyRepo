@@ -23,5 +23,8 @@ void WFMBuildManager::make()
 
 void WFMBuildManager::make(WFMReaderBase *reader, WFMBuilderBase *builder)
 {
+    builder->setSizes(reader->readVerticesQuan(), reader->readEdgesQuan());
+    builder->addVertices(reader->readVertices());
+    builder->addEdges(reader->readEdges());
 }
 

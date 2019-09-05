@@ -44,7 +44,7 @@ WFMReader::WFMReader() :
     vertexIdx(0), verticesQuan(-1),
     edgeIdx(0), edgesQuan(-1)
 {
-    dataStream = stdout;
+    dataStream = stdin;
 }
 
 WFMReader::WFMReader(const char *fname) :

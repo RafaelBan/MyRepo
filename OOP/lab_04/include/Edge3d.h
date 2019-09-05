@@ -10,6 +10,9 @@ class Edge3d
 public:
     Edge3d(std::weak_ptr<Point3d> v1, std::weak_ptr<Point3d> v2);
 
+    Point3d getVertex1();
+    Point3d getVertex2();
+
 private:
     std::weak_ptr<Point3d> vertex1Ptr;
     std::weak_ptr<Point3d> vertex2Ptr;

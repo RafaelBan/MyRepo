@@ -40,12 +40,15 @@ set(HEADERS
     include/Point3d.h
     include/Edge3d.h
     include/WireFrameModel.h
+    include/WFMIterator.h
 
     include/WFMReaderBase.h
     include/WFMReader.h
     include/WFMBuilderBase.h
     include/WFMBuilder.h
     include/WFMBuildManager.h
+
+    include/Exception.h
 )
 
 set(SOURCES
@@ -70,6 +73,8 @@ set(SOURCES
     source/WFMReader.cc
     source/WFMBuilder.cc
     source/WFMBuildManager.cc
+
+    source/Exception.cc
 )
 
 set(FORMS

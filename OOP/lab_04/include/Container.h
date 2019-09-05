@@ -26,6 +26,16 @@ public:
 
     size_t size() { return storage.size(); }
 
+    int indexOf(const SomeType &value)
+    {
+        for (int idx = 0; idx < int(size()); idx++)
+        {
+            if (storage[idx] == value) return idx;
+        }
+
+        return -1;
+    }
+
     iterator begin() { return storage.begin(); }
     const_iterator begin() const { return storage.begin(); }
     const_iterator cbegin() const { return storage.cbegin(); }
