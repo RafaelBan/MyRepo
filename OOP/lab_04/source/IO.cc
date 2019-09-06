@@ -118,3 +118,8 @@ IOBase &IO::operator<<(const char *var)
     return *this;
 }
 
+void IO::rewind()
+{
+    ::rewind(IOstream);
+}
+

@@ -15,6 +15,8 @@ public:
 
     virtual IOBase &operator>>(int &var) = 0;
     virtual IOBase &operator>>(double &var) = 0;
+
+    virtual void rewind() = 0;
 };
 
 #endif //IO_BASE_H_

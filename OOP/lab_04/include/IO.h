@@ -23,6 +23,7 @@ public:
     IOBase &operator>>(int &var) override;
     IOBase &operator>>(double &var) override;
 
+    void rewind() override;
 
     static IO &STDInputStream();
     static IO &STDOutputStream();
@@ -30,10 +31,11 @@ public:
 protected:
     explicit IO();
 
+    FILE *IOstream;
+
 private:
     explicit IO(FILE *stdStream);
 
-    FILE *IOstream;
     bool isError;
 };
 
