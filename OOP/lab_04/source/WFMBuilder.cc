@@ -1,4 +1,5 @@
 #include "WFMBuilder.h"
+#include "WFMExceptions.h"
 
 WFMBuilder::WFMBuilder() :
     isSizesLimited(false),
@@ -33,7 +34,7 @@ void WFMBuilder::addVertex(const Point3d &point)
 {
     if (model->verticesQuantity() >= size_t(verticesQuan))
     {
-        // EXCEPTION
+        throw WFMBuildException("At addVertex.");
     }
 
     model->addVertex(point);
@@ -51,7 +52,7 @@ void WFMBuilder::addEdge(const Pair<> &edge)
 {
     if (model->edgesQuantity() >= size_t(edgesQuan))
     {
-        // EXCEPTION
+        throw WFMBuildException("At addEdge.");
     }
 
     model->addEdge(edge.first, edge.second);

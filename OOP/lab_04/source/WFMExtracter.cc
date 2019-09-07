@@ -1,5 +1,7 @@
 #include "WFMExtracter.h"
 
+#include "WFMExceptions.h"
+
 WFMExtracter::WFMExtracter(WireFrameModel *model)
 {
     setModel(model);
@@ -8,11 +10,7 @@ WFMExtracter::WFMExtracter(WireFrameModel *model)
 void WFMExtracter::setModel(WireFrameModel *model)
 {
     this->model = model;
-    rewind();
-}
 
-void WFMExtracter::rewind()
-{
     vertexIt = model->cbegin();
     edgeIt = model->getConstEdges().cbegin();
 }
@@ -31,7 +29,7 @@ Point3d WFMExtracter::readVertex()
 {
     if (!isAvailableVertices())
     {
-        // EXCEPTION
+        throw WFMExtractException("At readVertex. ");
     }
 
     return **(vertexIt++);
@@ -54,7 +52,7 @@ Pair<int, int> WFMExtracter::readEdge()
 {
     if (!isAvailableEdges())
     {
-        // EXCEPTION
+        throw WFMExtractException("At readEdge. ");
     }
 
     Point3d v1 = (*edgeIt)->getVertex1();

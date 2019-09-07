@@ -1,41 +1,35 @@
 #include "WFMReader.h"
 
+#include "WFMExceptions.h"
+
 static inline int
-_read_int(FILE *inputs)
+_read_int(IOBase *inputs)
 {
-    int rc;
     int number = 0;
 
-    rc = fscanf(inputs, "%d", &number);
+    *inputs >> number;
 
-    if (rc != 1)
+    if (!inputs->isValid())
     {
-        // EXCEPTION
+        throw WFMReadException("Can not read int. ");
     }
 
     return number;
 }
 
 static inline double
-_read_double(FILE *inputs)
+_read_double(IOBase *inputs)
 {
-    int rc;
     double number = 0;
 
-    rc = fscanf(inputs, "%lf", &number);
+    *inputs >> number;
 
-    if (rc != 1)
+    if (!inputs->isValid())
     {
-        // EXECPTION
+        throw WFMReadException("Can not read double. ");
     }
 
     return number;
-}
-
-static inline bool
-_is_external_stream(FILE *file_stream)
-{
-    return (file_stream != stdout) && (file_stream != stderr) && (file_stream != stdin);
 }
 
 WFMReader::WFMReader() :
@@ -44,70 +38,74 @@ WFMReader::WFMReader() :
     vertexIdx(0), verticesQuan(-1),
     edgeIdx(0), edgesQuan(-1)
 {
-    dataStream = stdin;
 }
 
-WFMReader::WFMReader(const char *fname) :
-    WFMReaderBase(),
-
-    vertexIdx(0), verticesQuan(-1),
-    edgeIdx(0), edgesQuan(-1)
-
-
+WFMReader::WFMReader(IOBase *inputs) :
+    WFMReader()
 {
-    dataStream = fopen(fname, "r");
+    setInputStream(inputs);
 }
 
 WFMReader::~WFMReader()
 {
-    if (_is_external_stream(dataStream))
-    {
-        fclose(dataStream);
-    }
 }
 
-void WFMReader::rewind()
+void WFMReader::setInputStream(IOBase *inputs)
 {
-    vertexIdx = 0;
-    edgeIdx = 0;
-    ::rewind(dataStream);
+    this->inputs = inputs;
 }
 
 int WFMReader::readVerticesQuan()
 {
-    // try {
-    verticesQuan = _read_int(dataStream);
-    return verticesQuan;
-    // }
-    // catch {}
+    try
+    {
+        verticesQuan = _read_int(inputs);
+        return verticesQuan;
+    }
+    catch (WFMReadException e)
+    {
+        throw WFMReadException((std::string("At readVerticesQuan. ") + e.what()).c_str());
+    }
+
+    return 0;
 }
 
 int WFMReader::readEdgesQuan()
 {
-    // try {
-    edgesQuan =_read_int(dataStream);
-    return edgesQuan;
-    // }
-    // catch {}
+    try
+    {
+        edgesQuan =_read_int(inputs);
+        return edgesQuan;
+    }
+    catch (WFMReadException e)
+    {
+        throw WFMReadException((std::string("At readEdgesQuan. ") + e.what()).c_str());
+    }
+
+    return 0;
 }
 
 Point3d WFMReader::readVertex()
 {
     if (!isAvailableVertices())
     {
-        // EXCEPTION
+        throw WFMReadException("At readEdge. No available vertices to read. ");
     }
 
     double x, y, z;
 
     x = y = z = 0;
 
-    // try {
-    x = _read_double(dataStream);
-    y = _read_double(dataStream);
-    z = _read_double(dataStream);
-    // }
-    // catch {}
+    try
+    {
+        x = _read_double(inputs);
+        y = _read_double(inputs);
+        z = _read_double(inputs);
+    }
+    catch (WFMReadException e)
+    {
+        throw WFMReadException((std::string("At readVertex. ") + e.what()).c_str());
+    }
 
     vertexIdx++;
     return { x, y, z };
@@ -130,18 +128,22 @@ Pair<int, int> WFMReader::readEdge()
 {
     if (!isAvailableEdges())
     {
-        // EXCEPTION
+        throw WFMReadException("At readEdge. No available edges to read. ");
     }
 
     int idx1, idx2;
 
     idx1 = idx2 = 0;
 
-    // try {
-    idx1 = _read_int(dataStream);
-    idx2 = _read_int(dataStream);
-    // }
-    // catch {}
+    try
+    {
+        idx1 = _read_int(inputs);
+        idx2 = _read_int(inputs);
+    }
+    catch (WFMReadException e)
+    {
+        throw WFMReadException((std::string("At readEdge. ") + e.what()).c_str());
+    }
 
     edgeIdx++;
     return { idx1, idx2 };

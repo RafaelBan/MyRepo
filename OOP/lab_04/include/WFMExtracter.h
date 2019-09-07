@@ -14,8 +14,6 @@ public:
 
     void setModel(WireFrameModel *model);
 
-    void rewind() override;
-
     int readVerticesQuan() override;
     int readEdgesQuan() override;
 

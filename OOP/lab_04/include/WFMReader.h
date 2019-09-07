@@ -1,7 +1,7 @@
 #ifndef WFM_READER_H_
 #define WFM_READER_H_
 
-#include <cstdio>
+#include "IOBase.h"
 
 #include "Pair.h"
 #include "Point3d.h"
@@ -11,10 +11,10 @@ class WFMReader : public WFMReaderBase
 {
 public:
     explicit WFMReader();
-    explicit WFMReader(const char *fname);
+    explicit WFMReader(IOBase *inputs);
     ~WFMReader() override;
 
-    void rewind() override;
+    void setInputStream(IOBase *inputs);
 
     int readVerticesQuan() override;
     int readEdgesQuan() override;
@@ -35,7 +35,7 @@ private:
     int edgeIdx;
     int edgesQuan;
 
-    FILE *dataStream;
+    IOBase *inputs;
 };
 
 #endif // WFM_READER_H_

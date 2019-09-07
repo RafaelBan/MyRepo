@@ -12,8 +12,6 @@ public:
     explicit WFMReaderBase() = default;
     virtual ~WFMReaderBase() = default;
 
-    virtual void rewind() = 0;
-
     virtual int readVerticesQuan() = 0;
     virtual int readEdgesQuan() = 0;
 

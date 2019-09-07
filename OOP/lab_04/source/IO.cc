@@ -101,7 +101,7 @@ IOBase &IO::operator<<(const double &var)
         return *this;
     }
 
-    fprintf(IOstream, "%lf", var);
+    fprintf(IOstream, "%g", var);
 
     return *this;
 }

@@ -44,11 +44,19 @@ set(HEADERS
 
     include/WFMReaderBase.h
     include/WFMReader.h
+    include/WFMExtracter.h
+
     include/WFMBuilderBase.h
     include/WFMBuilder.h
+    include/WFMWriter.h
+
     include/WFMBuildManager.h
 
     include/Exception.h
+
+    include/IOBase.h
+    include/IO.h
+    include/IOFile.h
 )
 
 set(SOURCES
@@ -71,10 +79,17 @@ set(SOURCES
     source/WireFrameModel.cc
 
     source/WFMReader.cc
+    source/WFMExtracter.cc
+
     source/WFMBuilder.cc
+    source/WFMWriter.cc
+
     source/WFMBuildManager.cc
 
     source/Exception.cc
+
+    source/IO.cc
+    source/IOFile.cc
 )
 
 set(FORMS

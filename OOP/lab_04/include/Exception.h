@@ -20,5 +20,14 @@ public:
     what() const noexcept;
 };
 
+#define _EXCEPTION_FORK(NAME, MAIN_INFO) \
+class NAME : public Exception \
+{ \
+public: \
+    NAME(const char *optInfo) : \
+        Exception(MAIN_INFO, optInfo) \
+    {} \
+}
+
 #endif //EXCEPTION_H_
 
