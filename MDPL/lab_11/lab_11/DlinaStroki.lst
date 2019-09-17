@@ -1,0 +1,72 @@
+Microsoft (R) Macro Assembler Version 14.16.27027.1	    05/06/19 10:40:19
+.\DlinaStroki.asm					     Page 1 - 1
+
+
+				.386
+				.model flat, c
+
+				public DlinaStroki
+
+ 00000000			.code
+
+ 00000000			DlinaStroki proc
+ 00000000  55			        push    ebp
+ 00000001  8B EC		        mov     ebp, esp
+ 00000003  57			        push    edi
+ 00000004  53			        push    ebx
+
+ 00000005  B0 00		        mov     al, 0
+ 00000007  B9 FFFFFFFF		        mov     ecx, -1
+ 0000000C  8B 7D 08		        mov     edi, [ebp + 8]
+
+ 0000000F  F2/ AE		        repne   scasb
+
+ 00000011  83 C1 02		        add     ecx, 2
+ 00000014  F7 D9		        neg     ecx
+ 00000016  8B C1		        mov     eax, ecx
+
+ 00000018  5B			        pop     ebx
+ 00000019  5F			        pop     edi
+ 0000001A  5D			        pop     ebp
+ 0000001B  C3			        ret
+ 0000001C			DlinaStroki endp
+
+				end
+Microsoft (R) Macro Assembler Version 14.16.27027.1	    05/06/19 10:40:19
+.\DlinaStroki.asm					     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000001C DWord	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+DlinaStroki  . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000001C Public C
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000001h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+
+	   0 Warnings
+	   0 Errors

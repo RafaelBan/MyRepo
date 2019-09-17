@@ -1,0 +1,112 @@
+Microsoft (R) Macro Assembler Version 14.16.27027.1	    06/11/19 03:46:27
+.\DelProbel.asm						     Page 1 - 1
+
+
+				.386
+				.model flat, c
+
+				public  DelProbel
+				extern  DlinaStroki: near
+				extern  CopyStr: near
+
+ 00000000			.code
+
+ 00000000			DelProbel proc
+ 00000000  55			        push    ebp
+ 00000001  8B EC		        mov     ebp, esp
+ 00000003  56			        push    esi
+ 00000004  57			        push    edi
+ 00000005  53			        push    ebx
+
+ 00000006  8B 5D 08		        mov     ebx, [ebp + 8]
+
+ 00000009  53			        push    ebx
+ 0000000A  E8 00000000 E	        call    DlinaStroki
+ 0000000F  83 C4 04		        add     esp, 4
+
+ 00000012  83 F8 00		        cmp     eax, 0
+ 00000015  74 36		        je      exit
+
+ 00000017  B9 FFFFFFFF		        mov     ecx, -1
+ 0000001C  8B FB		        mov     edi, ebx
+ 0000001E  03 F8		        add     edi, eax
+ 00000020  B0 20		        mov     al, ' '
+ 00000022  83 EF 02		        sub     edi, 2      ; without '\0'
+ 00000025  FD			        std
+
+ 00000026  F3/ AE		        repe    scasb
+ 00000028  FC			        cld
+ 00000029  83 C7 02		        add     edi, 2
+ 0000002C  C6 07 00		        mov     byte ptr [edi], 0
+
+ 0000002F  8B D7		        mov     edx, edi
+				        ;sub     edx, ebx
+
+ 00000031  B9 FFFFFFFF		        mov     ecx, -1
+ 00000036  B0 20		        mov     al, ' '
+ 00000038  8B FB		        mov     edi, ebx
+
+ 0000003A  F3/ AE		        repe    scasb
+ 0000003C  4F			        dec     edi
+
+ 0000003D  8B C7		        mov     eax, edi
+				        ;sub     eax, ebx
+ 0000003F  2B D0		        sub     edx, eax
+
+ 00000041  52			        push    edx
+ 00000042  53			        push    ebx
+ 00000043  57			        push    edi
+ 00000044  E8 00000000 E	        call    CopyStr
+ 00000049  83 C4 08		        add     esp, 8
+ 0000004C  58			        pop     eax
+
+ 0000004D			    exit:
+ 0000004D  5B			        pop     ebx
+ 0000004E  5F			        pop     edi
+ 0000004F  5E			        pop     esi
+ 00000050  5D			        pop     ebp
+ 00000051  C3			        ret
+ 00000052			DelProbel endp
+
+				end
+Microsoft (R) Macro Assembler Version 14.16.27027.1	    06/11/19 03:46:27
+.\DelProbel.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000052 DWord	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+DelProbel  . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000052 Public C
+  exit . . . . . . . . . . . . .	L Near	 0000004D _TEXT	
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000001h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+CopyStr  . . . . . . . . . . . .	L Near	 00000000 FLAT	External C
+DlinaStroki  . . . . . . . . . .	L Near	 00000000 FLAT	External C
+
+	   0 Warnings
+	   0 Errors
